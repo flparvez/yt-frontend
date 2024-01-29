@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axiosInstance from "../../helpers/axiosInstance";
 import toast from "react-hot-toast";
-
+// All Slice Almost DOnew
 const initialState = {
     loading: false,
     subscribed: null,
