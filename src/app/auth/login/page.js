@@ -1,5 +1,6 @@
 "use client"
 import React from "react";
+import LoginSkeleton from "../../../skeleton/LoginSkeleton.js"
 
 import { useForm } from "react-hook-form";
 
@@ -35,7 +36,7 @@ function Login() {
     };
 
     if (loading) {
-        return <h2>Loading</h2>
+        return <LoginSkeleton />
     }
 
     return (

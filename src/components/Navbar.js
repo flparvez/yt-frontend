@@ -69,11 +69,13 @@ function Navbar() {
                 {/* login and signup butons for larger screens */}
                 {authStatus ? (
                     <div className="rounded-full sm:block hidden">
+                      <Link href="/channel">
                         <Image
                             src={profileImg}
                             alt="profileImg"
                             className="rounded-full w-10 h-10 object-cover"
-                        />
+                        /></Link>
+
                     </div>
                 ) : (
                     <div className="space-x-2 sm:block hidden">
@@ -135,7 +137,7 @@ function Navbar() {
 
                             {!authStatus && (
                                 <div className="flex flex-col space-y-5 mb-3">
-                                    <Link href={"/login"}>
+                                    <Link href="/login">
                                         <button className="w-full bg-[#222222] border hover:bg-white hover:text-black border-slate-500 py-1 px-3">
                                             Login
                                         </button>
