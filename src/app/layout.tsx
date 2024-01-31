@@ -5,6 +5,7 @@ import "./globals.css";
 import { Provider } from "react-redux";
 import { store } from "../store/store";
 import Navbar from '../components/Navbar.js'
+import { Sidebar } from "@/components";
 const inter = Inter({ subsets: ["latin"] });
 
 // export const metadata: Metadata = {
@@ -21,7 +22,19 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
        
-        <Provider store={store}>   <Navbar/> {children} </Provider>
+        <Provider store={store}>   <Navbar/> 
+         
+<div className="sm:flex flex-none">
+                <div className="">
+                    <Sidebar />
+                </div>
+                <div className="sm:flex-1">
+                    <h2>OUtlet</h2>
+                </div>
+            </div>
+         {children}
+         
+         </Provider>
       
         </body>
     </html>

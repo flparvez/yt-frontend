@@ -89,7 +89,7 @@ export const getVideoById = createAsyncThunk(
     "getVideoById",
     async ({ videoId, userId }) => {
         try {
-            const response = await axiosInstance.post(`/video/v/${videoId}`, {
+            const response = await axiosInstance.get(`/video/${videoId}`, {
                 userId,
             });
             return response.data.data;

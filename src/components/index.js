@@ -1,17 +1,18 @@
 
 import Sidebar from './Sidebar'
+import Edit from "./Edit.js"
 // import Logo from "./Logo";
-// import ChannelHeader from "./channel/ChannelHeader";
-// import ChannelNavigate from "./channel/ChannelNavigate";
+import ChannelHeader from "./ChannelHeader.js";
+import ChannelNavigate from "./channelNavigate.js";
 import VideoList from "./videoList.js";
 // import SignUp from "./Signup";
-// import TweetAndComment from "./TweetAndComment";
-// import Video from "./Video";
-// import CommentList from "./CommentsList";
-// import Edit from "./Edit";
-// import DeleteConfirmation from "./DeleteConfirmation";
+import TweetAndComment from "./TweetAndComment.js";
+import Video from "./Video";
+import DeleteConfirmation from "./DeleteConfirmation.js"
 import Like from "./like.js";
 import Description from "./Description";
+import NoVideosFound from './NoVideosFound'
+import CommentsList from "./CommentList.js"
 
 // import NoVideosFound from "./NoVideosFound";
 
@@ -19,6 +20,15 @@ export {
    VideoList,
    Like,
    Description,
-   Sidebar
-//    NoVideosFound
+   Sidebar,
+   NoVideosFound,
+   ChannelHeader,
+   ChannelNavigate,
+   Video,
+   DeleteConfirmation,
+   Edit,
+   TweetAndComment,
+   CommentsList,
+
+
 };
