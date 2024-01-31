@@ -4,10 +4,12 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getVideoById } from "../../../store/Slices/videoSlice.js";
-import { CommentsList, TweetAndComment, Video } from "../../../components/index.js";
-import Description from "../../../components/Description.js";
+import { CommentsList, TweetAndComment, Video,Description } from "../../../components/index.js";
+
 import { getVideoComments } from "../../../store/Slices/commentSlice.js";
 import { useParams } from "next/navigation.js";
+
+
 
 
 function VideoDetail() {
@@ -38,8 +40,8 @@ function VideoDetail() {
                     poster={video?.thumbnail?.url}
                 />
             </div>
-            <Description
-                avatar={video?.owner?.avatar.url}
+            <Description 
+            //    avatar={video?.owner?.avatar.url}
                 channelName={video?.owner?.username}
                 createdAt={video?.createdAt}
                 description={video?.description}

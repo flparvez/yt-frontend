@@ -5,15 +5,16 @@ import { Like } from "./index.js";
 import { useDispatch } from "react-redux";
 
 import { toggleSubscription } from "../store/Slices/subscriptionSlice.js";
-import Link from "next/link.js";
-import Image from "next/image.js";
+import Link from "next/link";
+
+
 
 function Description({
     title,
     views,
     createdAt,
     channelName,
-    avatar,
+    // avatar,
     subscribersCount,
     likesCount,
     isSubscribed,
@@ -28,17 +29,19 @@ function Description({
 
     const handleSubscribe = () => {
         dispatch(toggleSubscription(channelId));
+        // Update localIsSubscribed state before using its value
         setLocalIsSubscribed((prev) => !prev);
-        if (localIsSubscribed) {
-            setLocalSubscribersCount((prev) => prev - 1);
-        } else {
+        if (!localIsSubscribed) {
             setLocalSubscribersCount((prev) => prev + 1);
+        } else {
+            setLocalSubscribersCount((prev) => prev - 1);
         }
     };
 
-    const handleSubsribe = () => {};
+    
+
     return (
-        <>
+         <>
             <section className="sm:max-w-4xl w-full text-white sm:p-5 p-2 space-y-2">
                 <div className="border-b border-slate-700">
                     <div className="space-y-2 mb-2">
@@ -66,10 +69,7 @@ function Description({
                                 href={`/channel/${channelName}/videos`}
                                 className="flex gap-2"
                             >
-                                <Image
-                                    src={avatar} alt="Image"
-                                    className="w-10 h-10 rounded-full object-cover" 
-                                />
+                              
                                 <div>
                                     <h1 className="font-semibold">
                                         {channelName}
@@ -79,14 +79,14 @@ function Description({
                                     </p>
                                 </div>
                             </Link>
-                            <div onClick={handleSubsribe}>
+                            <div>
                                 <button
                                     onClick={handleSubscribe}
                                     className="border-slate-500 hover:scale-110 transition-all text-black font-bold px-4 py-1 bg-purple-500"
                                 >
                                     {localIsSubscribed
                                         ? "Subscribed"
-                                        : "Subscribe"}
+                                        : "Subscribe"}s
                                 </button>
                             </div>
                         </div>
@@ -101,3 +101,14 @@ function Description({
 }
 
 export default Description;
+
+
+
+
+
+
+
+
+
+
+

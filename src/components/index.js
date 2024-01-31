@@ -10,7 +10,7 @@ import TweetAndComment from "./TweetAndComment.js";
 import Video from "./Video";
 import DeleteConfirmation from "./DeleteConfirmation.js"
 import Like from "./like.js";
-import Description from "./Description";
+import Description from "./Description.js";
 import NoVideosFound from './NoVideosFound'
 import CommentsList from "./CommentList.js"
 
