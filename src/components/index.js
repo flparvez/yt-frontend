@@ -5,7 +5,7 @@ import Edit from "./Edit.js"
 import ChannelHeader from "./ChannelHeader.js";
 import ChannelNavigate from "./channelNavigate.js";
 import VideoList from "./videoList.js";
-// import SignUp from "./Signup";
+import Avatar from "./Avatar.js"
 import TweetAndComment from "./TweetAndComment.js";
 import Video from "./Video";
 import DeleteConfirmation from "./DeleteConfirmation.js"
@@ -29,6 +29,7 @@ export {
    Edit,
    TweetAndComment,
    CommentsList,
+   Avatar,
 
 
 };

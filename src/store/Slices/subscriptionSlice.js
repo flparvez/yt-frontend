@@ -1,7 +1,8 @@
+"use client"
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axiosInstance from "../../helpers/axiosInstance";
 import toast from "react-hot-toast";
-// All Slice Almost DOnew
+
 const initialState = {
     loading: false,
     subscribed: null,
@@ -80,8 +81,11 @@ const subscriptionSlice = createSlice({
         });
         builder.addCase(getSubscribedChannels.fulfilled, (state, action) => {
             state.loading = false;
+            
             state.mySubscriptions = action.payload.filter(
+
                 (subscription) => subscription?.subscribedChannel?.latestVideo
+                
             );
         });
     },
