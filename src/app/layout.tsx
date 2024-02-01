@@ -29,10 +29,10 @@ export default function RootLayout({
                     <Sidebar />
                 </div>
                 <div className="sm:flex-1">
-                    <h2>OUtlet</h2>
+                     {children}
                 </div>
             </div>
-         {children}
+        
          
          </Provider>
       

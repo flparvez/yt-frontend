@@ -36,7 +36,7 @@ function ChannelHeader({
                 {/* coverImage section */}
                 <section className="w-full">
                     {coverImage ? (
-                        <Image
+                        <Image width={200} height={200}
                             src={coverImage}
                             className="sm:h-40 h-28 w-full object-cover" alt="Cover Image"
                         />
@@ -49,7 +49,7 @@ function ChannelHeader({
                     <div className="relative h-12">
                         <div className="relative sm:w-32 w-28 sm:h-32 h-28">
                             <Image
-                                src={avatar}
+                                src={avatar} width={100} height={100}
                                 className="rounded-full sm:w-32 w-28 sm:h-32 h-28 object-cover absolute sm:bottom-10 bottom-20 outline-none"
                             alt="Avatar" />
                         </div>
@@ -58,7 +58,7 @@ function ChannelHeader({
                         <div>
                             <h1 className="text-xl font-bold">{username}</h1>
                             <h3 className="text-sm text-slate-400">
-                                @{fullName}
+                                @{username}
                             </h3>
                             <div className="flex gap-1">
                                 <p className="text-xs text-slate-400">

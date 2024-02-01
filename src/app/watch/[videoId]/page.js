@@ -41,7 +41,9 @@ function VideoDetail() {
                 />
             </div>
             <Description 
-            //    avatar={video?.owner?.avatar.url}
+
+                avatar={video?.owner?.avatar}
+                
                 channelName={video?.owner?.username}
                 createdAt={video?.createdAt}
                 description={video?.description}

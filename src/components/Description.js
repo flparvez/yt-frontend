@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { timeAgo } from "../helpers/timeAgo.js";
 import { Like } from "./index.js";
 import { useDispatch } from "react-redux";
+import Image from 'next/image'
 
 import { toggleSubscription } from "../store/Slices/subscriptionSlice.js";
 import Link from "next/link";
@@ -14,7 +15,7 @@ function Description({
     views,
     createdAt,
     channelName,
-    // avatar,
+    avatar,
     subscribersCount,
     likesCount,
     isSubscribed,
@@ -69,7 +70,11 @@ function Description({
                                 href={`/channel/${channelName}/videos`}
                                 className="flex gap-2"
                             >
-                              
+                               <Image width={100} height={100}
+      src={avatar} 
+    className="w-10 h-10 rounded-full object-cover"
+                            alt="Avatar" />
+
                                 <div>
                                     <h1 className="font-semibold">
                                         {channelName}
