@@ -31,9 +31,10 @@ function LikedVideos() {
             <div className="container">
                 <div className="grid lg:grid-cols-3 sm:grid-cols-2 text-white mb-20 sm:mb-0">
                     {likedVideos?.map((video) => (
-
-                     <Link href={`/watch/${video.likedVideo._id}`}
-                            key={video.likedVideo._id}>
+                        <Link
+                            href={`/watch/${video.likedVideo._id}`}
+                            key={video.likedVideo._id}
+                        >
                             <VideoList
                                 avatar={
                                     video.likedVideo.ownerDetails?.avatar?.url
@@ -43,9 +44,9 @@ function LikedVideos() {
                                 thumbnail={video.likedVideo.thumbnail?.url}
                                 createdAt={video.likedVideo.createdAt}
                                 views={video.likedVideo.views}
+                                channelName={video.likedVideo.ownerDetails?.username}
                             />
                         </Link>
-                        
                     ))}
                 </div>
           </div>

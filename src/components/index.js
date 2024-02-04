@@ -1,6 +1,8 @@
 
 import Sidebar from './Sidebar'
 import Edit from "./Edit.js"
+import Spinner from "./Spinner"
+import TogglePublish from "./TogglePublish"
 // import Logo from "./Logo";
 import ChannelHeader from "./ChannelHeader.js";
 import ChannelNavigate from "./channelNavigate.js";
@@ -13,6 +15,7 @@ import Like from "./like.js";
 import Description from "./Description.js";
 import NoVideosFound from './NoVideosFound'
 import CommentsList from "./CommentList.js"
+import Input2 from "./Input2"
 
 // import NoVideosFound from "./NoVideosFound";
 
@@ -30,6 +33,10 @@ export {
    TweetAndComment,
    CommentsList,
    Avatar,
+   TogglePublish,
+   Input2,
+   Spinner,
+   
 
 
 };

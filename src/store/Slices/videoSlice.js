@@ -1,13 +1,16 @@
+"use client"
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axiosInstance from "../../helpers/axiosInstance";
 import toast from "react-hot-toast";
 import { BASE_URL } from "../../constants";
 
-// All Slice Almost DOne
 const initialState = {
     loading: false,
-    isPublished: null,
+    uploading: false,
+    uploaded: false,
+    videos: null,
     video: null,
+    publishToggled: false
 };
 
 export const getAllVideos = createAsyncThunk(
@@ -39,7 +42,7 @@ export const publishAvideo = createAsyncThunk("publishAvideo", async (data) => {
     const formData = new FormData();
     formData.append("title", data.title);
     formData.append("description", data.description);
-    formData.append("videoFile", data.videoFile);
+    formData.append("videoFile", data.videoFile[0]);
     formData.append("thumbnail", data.thumbnail[0]);
 
     try {
@@ -52,7 +55,8 @@ export const publishAvideo = createAsyncThunk("publishAvideo", async (data) => {
     }
 });
 
-export const updateAVideo = createAsyncThunk("updateAVideo", async (data) => {
+export const updateAVideo = createAsyncThunk("updateAVideo", async ({videoId, data}) => {
+
     const formData = new FormData();
     formData.append("title", data.title);
     formData.append("description", data.description);
@@ -60,7 +64,7 @@ export const updateAVideo = createAsyncThunk("updateAVideo", async (data) => {
 
     try {
         const response = await axiosInstance.patch(
-            `/video/v/${data.videoId}`,
+            `/video/v/${videoId}`,
             formData
         );
         toast.success(response?.data?.message);
@@ -104,10 +108,10 @@ export const togglePublishStatus = createAsyncThunk(
     "togglePublishStatus",
     async (videoId) => {
         try {
-            const response = await axiosInstance.get(
+            const response = await axiosInstance.patch(
                 `/video/toggle/publish/${videoId}`
             );
-            toast.success(response.data.data.message);
+            toast.success(response.data.message);
             return response.data.data.isPublished;
         } catch (error) {
             toast.error(error?.response?.data?.error);
@@ -119,7 +123,12 @@ export const togglePublishStatus = createAsyncThunk(
 const videoSlice = createSlice({
     name: "video",
     initialState,
-    reducers: {},
+    reducers: {
+        updateUploadState: (state) => {
+            state.uploading = false;
+            state.uploaded = false;
+        },
+    },
     extraReducers: (builder) => {
         builder.addCase(getAllVideos.pending, (state) => {
             state.loading = true;
@@ -129,16 +138,18 @@ const videoSlice = createSlice({
             state.videos = action.payload;
         });
         builder.addCase(publishAvideo.pending, (state) => {
-            state.loading = true;
+            state.uploading = true;
         });
         builder.addCase(publishAvideo.fulfilled, (state) => {
-            state.loading = false;
+            state.uploading = false;
+            state.uploaded = true;
         });
         builder.addCase(updateAVideo.pending, (state) => {
-            state.loading = true;
+            state.uploading = true;
         });
         builder.addCase(updateAVideo.fulfilled, (state) => {
-            state.loading = false;
+            state.uploading = false;
+            state.uploaded = true;
         });
         builder.addCase(deleteAVideo.pending, (state) => {
             state.loading = true;
@@ -153,10 +164,13 @@ const videoSlice = createSlice({
             state.loading = false;
             state.video = action.payload;
         });
-        builder.addCase(togglePublishStatus.fulfilled, (state, action) => {
-            state.isPublished = action.payload;
+        builder.addCase(togglePublishStatus.fulfilled, (state) => {
+            state.publishToggled = !state.publishToggled
         });
+
     },
 });
+
+export const { updateUploadState } = videoSlice.actions;
 
 export default videoSlice.reducer;
