@@ -4,34 +4,33 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getVideoById } from "../../../store/Slices/videoSlice.js";
-import { CommentsList, TweetAndComment, Video,Description } from "../../../components/index.js";
+import { CommentsList, TweetAndComment, Video, Description } from "../../../components/index.js";
 
 import { getVideoComments } from "../../../store/Slices/commentSlice.js";
-import { useParams } from "next/navigation.js";
+// import { useParams } from "next/navigation.js";
 
 
 
 
-function VideoDetail() {
+function VideoDetail({ params }) {
     const dispatch = useDispatch();
-   
-    const { videoId } = useParams();
-    const userId = useSelector((state) => state.auth?.userData?._id);
+
+    const { videoId } = params;
+
 
     const video = useSelector((state) => state.video?.video);
-    // const video = useSelector((state) => state.video);
+
 
     console.log(video)
     const comments = useSelector((state) => state.comment?.comments);
     const totalComments = useSelector((state) => state.comment?.totalComments);
 
     useEffect(() => {
-        if (videoId && userId) {
-            dispatch(getVideoById({ videoId, userId }));
+        if (videoId) {
+            dispatch(getVideoById({ videoId }));
             dispatch(getVideoComments({ videoId }));
         }
-    }, [dispatch, videoId, userId]);
-
+    }, [dispatch, videoId]);
     return (
         <>
             <div className="">
@@ -40,10 +39,10 @@ function VideoDetail() {
                     poster={video?.thumbnail?.url}
                 />
             </div>
-            <Description 
+            <Description
 
                 avatar={video?.owner?.avatar}
-                
+
                 channelName={video?.owner?.username}
                 createdAt={video?.createdAt}
                 description={video?.description}

@@ -16,8 +16,11 @@ import Description from "./Description.js";
 import NoVideosFound from './NoVideosFound'
 import CommentsList from "./CommentList.js"
 import Input2 from "./Input2"
-
-// import NoVideosFound from "./NoVideosFound";
+import UploadVideo from './UploadVideo'
+import EditVideo from "./EditVideo"
+import HeaderSection from './dashboard/HeaderSection'
+import StatsSection from './dashboard/StatsSection'
+import VideoTable from './dashboard/VideoTable'
 
 export {
    VideoList,
@@ -36,7 +39,12 @@ export {
    TogglePublish,
    Input2,
    Spinner,
-   
+   UploadVideo,
+   EditVideo,
+   HeaderSection,
+   StatsSection,
+VideoTable,
+
 
 
 };
