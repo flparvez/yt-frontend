@@ -1,42 +1,39 @@
 "use client"
-
 import React, { useEffect } from "react";
-import { ChannelHeader } from "../../../components/index.js";
-import  {ChannelNavigate}  from "../../../components/index.js";
+import { ChannelHeader,ChannelNavigate } from "../../../components/index";
 import { useDispatch, useSelector } from "react-redux";
-import { userChannelProfile } from "../../../store/Slices/userSlice.js";
-import { useParams } from "next/navigation.js";
+import { userChannelProfile } from "../../../store/Slices/userSlice";
 
 
 
-
-function Channel() {
+function Channel({params}) {
     const dispatch = useDispatch();
-    const { username } = useParams();
+    const { username } = params;
 
     const channel = useSelector((state) => state.user?.profileData);
     useEffect(() => {
         dispatch(userChannelProfile(username));
     }, [dispatch, username]);
 
+    window.scrollTo(0, 0);
+
     return (
         <>
-            {
-                channel &&
+            {channel && (
                 <ChannelHeader
-                username={username}
-                coverImage={channel?.coverImage}
-                avatar={channel?.avatar}
-                subscribedCount={channel?.channelsSubscribedToCount}
-                fullName={channel?.fullName}
-                subscribersCount={channel?.subcribersCount}
-                isSubscribed={channel?.isSubscribed}
-                channelId={channel?._id}
-            />
-            }
+                    username={username}
+                    coverImage={channel?.coverImage}
+                    avatar={channel?.avatar}
+                    subscribedCount={channel?.channelsSubscribedToCount}
+                    fullName={channel?.fullName}
+                    subscribersCount={channel?.subcribersCount}
+                    isSubscribed={channel?.isSubscribed}
+                    channelId={channel?._id}
+                />
+            )}
             <ChannelNavigate username={username} />
             <div className="overflow-y-scroll h-[32rem] sm:h-96 mb-20 sm:mb-0">
-                <h2>Outlet</h2>
+                <h4>outlet</h4>
             </div>
         </>
     );

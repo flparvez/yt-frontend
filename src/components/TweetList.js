@@ -1,13 +1,12 @@
 "use client"
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { timeAgo } from "../helpers/timeAgo.js";
+import { timeAgo } from "../helpers/timeAgo";
 import { useDispatch } from "react-redux";
-import { Like, DeleteConfirmation, Edit } from "./index.js";
+import { Like, DeleteConfirmation, Edit } from "./index";
 import { HiOutlineDotsVertical } from "./icons";
-import { deleteTweet, editTweet } from "../store/Slices/tweetSlice.js";
-import { Image } from 'next/image';
-
+import { deleteTweet, editTweet } from "../store/Slices/tweetSlice";
+import Image from "next/image";
 
 function TweetList({
     tweetId,
@@ -54,12 +53,10 @@ function TweetList({
         <>
             <div className="text-white w-full flex justify-start items-center sm:gap-5 gap-3 border-b border-slate-600 p-3 sm:p-5">
                 <div className="w-10">
-                   
-
-                     <Image width={100} height={100}
-     src={avatar || avatar2} 
-    className="w-10 h-10 rounded-full object-cover"
-                            alt="Avatar" />
+                    <Image
+                        src={avatar || avatar2} width={50} height={50}
+                        className="w-8 h-8 object-cover rounded-full" alt=""
+                    />
                 </div>
                 <div className="w-full flex flex-col gap-1 relative">
                     <div className="flex items-center gap-2">
@@ -143,18 +140,16 @@ function TweetList({
 
                     {/* deleteing the tweet */}
                     {editState.delete && (
-                        <div className="absolute z-50">
-                            <DeleteConfirmation
-                                tweet={true}
-                                onCancel={() =>
-                                    setEditState((prevState) => ({
-                                        ...prevState,
-                                        delete: !prevState.delete,
-                                    }))
-                                }
-                                onDelete={handleDeleteTweet}
-                            />
-                        </div>
+                        <DeleteConfirmation
+                            tweet={true}
+                            onCancel={() =>
+                                setEditState((prevState) => ({
+                                    ...prevState,
+                                    delete: !prevState.delete,
+                                }))
+                            }
+                            onDelete={handleDeleteTweet}
+                        />
                     )}
                 </div>
             </div>

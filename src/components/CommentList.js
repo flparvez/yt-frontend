@@ -1,10 +1,10 @@
 "use client"
 import React, { useState } from "react";
-import { timeAgo } from "../helpers/timeAgo.js";
+import { timeAgo } from "../helpers/timeAgo";
 import { useSelector, useDispatch } from "react-redux";
 import { Like, DeleteConfirmation, Edit } from "./index";
-import { HiOutlineDotsVertical } from "./icons.js";
-import { deleteAComment, editAComment } from "../store/Slices/commentSlice.js";
+import { HiOutlineDotsVertical } from "./icons";
+import { deleteAComment, editAComment } from "../store/Slices/commentSlice";
 import Image from "next/image";
 
 function CommentsList({
@@ -53,8 +53,8 @@ function CommentsList({
                 <div className="w-12">
                     <Image
                         src={avatar || avatar2}
-                        className="w-10 h-10 object-cover rounded-full"
-                   alt="" />
+                        className="w-10 h-10 object-cover rounded-full" alt="" height={50} width={50}
+                    />
                 </div>
                 <div className="w-full flex flex-col gap-1 relative">
                     <div className="flex items-center gap-2">
@@ -119,18 +119,17 @@ function CommentsList({
 
                     {/* Delete Confirm popup */}
                     {editState.delete && (
-                        <div className="absolute right-[20%] top-[50%] z-50">
-                            <DeleteConfirmation
-                                onCancel={() =>
-                                    setEditState((prevState) => ({
-                                        ...prevState,
-                                        delete: false,
-                                        isOpen: false,
-                                    }))
-                                }
-                                onDelete={handleDeleteComment}
-                            />
-                        </div>
+                        <DeleteConfirmation
+                            onCancel={() =>
+                                setEditState((prevState) => ({
+                                    ...prevState,
+                                    delete: false,
+                                    isOpen: false,
+                                }))
+                            }
+                            onDelete={handleDeleteComment}
+                            comment={true}
+                        />
                     )}
 
                     {/* edit comment */}

@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axiosInstance from "../../helpers/axiosInstance";
 import toast from "react-hot-toast";
-// All Slice Almost DOne
+
 const initialState = {
     loading: false,
     status: false,
@@ -15,8 +15,6 @@ export const createAccount = createAsyncThunk("register", async (data) => {
     formData.append("email", data.email);
     formData.append("password", data.password);
     formData.append("fullName", data.fullName);
-
-    
 
     try {
         const response = await axiosInstance.post("/users/register", formData);
@@ -73,7 +71,7 @@ export const changePassword = createAsyncThunk(
                 "/users/change-password",
                 data
             );
-            toast.success(response.data.data);
+            toast.success(response.data?.message);
             return response.data;
         } catch (error) {
             toast.error(error?.response?.data?.error);
@@ -86,6 +84,54 @@ export const getCurrentUser = createAsyncThunk("getCurrentUser", async () => {
     const response = await axiosInstance.get("/users/current-user");
     return response.data.data;
 });
+
+export const updateAvatar = createAsyncThunk("updateAvatar", async (avatar) => {
+    try {
+        const response = await axiosInstance.patch(
+            "/users/update-avatar",
+            avatar
+        );
+        toast.success("Updated details successfully!!!");
+        return response.data.data;
+    } catch (error) {
+        toast.error(error?.response?.data?.error);
+        throw error;
+    }
+});
+
+export const updateCoverImg = createAsyncThunk(
+    "updateCoverImg",
+    async (coverImage) => {
+        try {
+            const response = await axiosInstance.patch(
+                "/users/update-coverImg",
+                coverImage
+            );
+            toast.success(response.data?.message);
+            return response.data.data;
+        } catch (error) {
+            toast.error(error?.response?.data?.error);
+            throw error;
+        }
+    }
+);
+
+export const updateUserDetails = createAsyncThunk(
+    "updateUserDetails",
+    async (data) => {
+        try {
+            const response = await axiosInstance.patch(
+                "/users/update-user",
+                data
+            );
+            toast.success("Updated details successfully!!!");
+            return response.data;
+        } catch (error) {
+            toast.error(error?.response?.data?.error);
+            throw error;
+        }
+    }
+);
 
 const authSlice = createSlice({
     name: "auth",
@@ -126,6 +172,33 @@ const authSlice = createSlice({
             state.loading = false;
             state.status = false;
             state.userData = null;
+        });
+        builder.addCase(updateAvatar.pending, (state) => {
+            state.loading = true;
+        });
+        builder.addCase(updateAvatar.fulfilled, (state, action) => {
+            state.loading = false;
+            state.userData = action.payload;
+        });
+        builder.addCase(updateAvatar.rejected, (state) => {
+            state.loading = false;
+        });
+        builder.addCase(updateCoverImg.pending, (state) => {
+            state.loading = true;
+        });
+        builder.addCase(updateCoverImg.fulfilled, (state, action) => {
+            state.loading = false;
+            state.userData = action.payload;
+        });
+        builder.addCase(updateCoverImg.rejected, (state) => {
+            state.loading = false;
+        });
+        builder.addCase(updateUserDetails.pending, (state) => {
+            state.loading = true;
+        });
+        builder.addCase(updateUserDetails.fulfilled, (state, action) => {
+            state.loading = false;
+            state.userData = action.payload;
         });
     },
 });
