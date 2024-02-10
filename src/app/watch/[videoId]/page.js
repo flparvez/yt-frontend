@@ -3,34 +3,25 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getVideoById } from "../../../store/Slices/videoSlice.js";
-import { CommentsList, TweetAndComment, Video, Description } from "../../../components/index.js";
+import { getVideoById } from "../../../store/Slices/videoSlice";
+import { CommentsList, TweetAndComment, Video, Description } from "../../../components/index";
+import { getVideoComments } from "../../../store/Slices/commentSlice";
 
-import { getVideoComments } from "../../../store/Slices/commentSlice.js";
-// import { useParams } from "next/navigation.js";
-
-
-
-
-function VideoDetail({ params }) {
+function VideoDetail({params}) {
     const dispatch = useDispatch();
-
     const { videoId } = params;
-
-
     const video = useSelector((state) => state.video?.video);
-
-
-    console.log(video)
     const comments = useSelector((state) => state.comment?.comments);
     const totalComments = useSelector((state) => state.comment?.totalComments);
 
     useEffect(() => {
-        if (videoId) {
+        if (videoId ) {
             dispatch(getVideoById({ videoId }));
             dispatch(getVideoComments({ videoId }));
         }
     }, [dispatch, videoId]);
+
+    window.scrollTo(0, 0);
     return (
         <>
             <div className="">
@@ -40,9 +31,7 @@ function VideoDetail({ params }) {
                 />
             </div>
             <Description
-
                 avatar={video?.owner?.avatar}
-
                 channelName={video?.owner?.username}
                 createdAt={video?.createdAt}
                 description={video?.description}
@@ -65,7 +54,7 @@ function VideoDetail({ params }) {
                 {comments?.map((comment) => (
                     <CommentsList
                         key={comment?._id}
-                        avatar={comment?.owner?.avatar?.url}
+                        avatar={comment?.owner?.avatar}
                         commentId={comment?._id}
                         content={comment?.content}
                         createdAt={comment?.createdAt}

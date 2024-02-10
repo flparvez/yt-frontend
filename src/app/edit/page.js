@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 function EditChannel() {
     const channel = useSelector((state) => state.auth?.userData);
     const loading = useSelector((state) => state.auth?.loading);
-
+    window.scrollTo(0, 0);
     return (
         <>
             {loading && (
@@ -36,7 +36,7 @@ function EditChannel() {
             )}
             <ChannelNavigate edit={true} />
             <div className="overflow-y-scroll h-[32rem] sm:h-96 mb-20 sm:mb-0">
-                <h4>Outlet</h4>
+              <h2>Outlet</h2>
             </div>
         </>
     );

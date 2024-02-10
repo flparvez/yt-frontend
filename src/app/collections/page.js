@@ -4,6 +4,7 @@ import {
     
     DeleteConfirmation,
     HeaderSection,
+
     Spinner,
     StatsSection,
     VideoTable,
@@ -46,10 +47,11 @@ function AdminDashboard() {
         dispatch(getChannelVideos());
     }, [dispatch, uploaded, publishToggled, deleting]);
 
+    window.scrollTo(0, 0);
+
     return (
         <>
-            
-          <div className="container">
+            <div className="container">
                 <div className=" w-full relative h-screen text-white space-y-5 z-10">
                     {/* uploadVideoPopup */}
                     {popUp.uploadVideo && (

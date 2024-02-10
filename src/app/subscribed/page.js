@@ -1,8 +1,8 @@
 "use client"
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserChannelSubscribers } from "../../store/Slices/subscriptionSlice.js";
-import Avatar from "../../components/Avatar.js";
+import { getUserChannelSubscribers } from "../../store/Slices/subscriptionSlice";
+import { Avatar } from "../../components/index";
 import Link from "next/link";
 
 
@@ -22,7 +22,7 @@ function ChannelSubscribers() {
     return (
         <>
             {subscribers?.map((subscriber) => (
-                <Link
+                <Link 
                     key={subscriber?.subscriber?._id}
                     className="flex border-b border-slate-500 px-3 py-1 justify-between items-center text-white"
                 >

@@ -1,12 +1,9 @@
 "use client"
 import React, { useEffect } from "react";
-// import Container from "../components/Container";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllVideos } from "../store/Slices/videoSlice.js";
-
-import { VideoList } from "../components/index.js";
-import HomeSkeleton from "../skeleton/HomeSkelton.js";
-import Link from "next/link";
+import { getAllVideos } from "../store/Slices/videoSlice";
+import { VideoList } from "../components/index";
+import HomeSkeleton from "../skeleton/HomeSkelton";
 
 function HomePage() {
     const dispatch = useDispatch();
@@ -18,31 +15,27 @@ function HomePage() {
     }, [dispatch]);
 
     if (loading) {
-        return <HomeSkeleton />
+        return <HomeSkeleton />;
     }
     return (
-       <div className="w-full sm:px-5 px-1 sm:mt-5 mt-2">
-         
-      
+        <div className="container">
             <div className="text-white mb-20 sm:mb-0 w-full grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 overflow-y-scroll">
                 {videos?.map((video) => (
-                    <Link
-                        href={`/watch/${video._id}`}
+                    <VideoList
                         key={video._id}
-                    >
-                        <VideoList
-                            avatar={video.ownerDetails?.avatar.url}
-                            duration={video.duration}
-                            title={video.title}
-                            thumbnail={video.thumbnail?.url}
-                            createdAt={video.createdAt}
-                            views={video.views}
-                            // channelName={video.ownerDetails.username}
-                        />
-                    </Link>
+                        avatar={video.ownerDetails?.avatar}
+                        duration={video.duration}
+                        title={video.title}
+                        thumbnail={video.thumbnail?.url}
+                        createdAt={video.createdAt}
+                        views={video.views}
+                        channelName={video.ownerDetails.username}
+                        videoId={video._id}
+                    />
                 ))}
             </div>
-         </div>
+            </div>
+       
     );
 }
 

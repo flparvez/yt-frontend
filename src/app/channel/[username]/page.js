@@ -1,9 +1,8 @@
 "use client"
 import React, { useEffect } from "react";
-import { ChannelHeader,ChannelNavigate } from "../../../components/index";
+import { ChannelHeader, ChannelNavigate } from "../../../components/index";
 import { useDispatch, useSelector } from "react-redux";
 import { userChannelProfile } from "../../../store/Slices/userSlice";
-
 
 
 function Channel({params}) {
@@ -33,7 +32,7 @@ function Channel({params}) {
             )}
             <ChannelNavigate username={username} />
             <div className="overflow-y-scroll h-[32rem] sm:h-96 mb-20 sm:mb-0">
-                <h4>outlet</h4>
+               <h4>Outlet</h4>
             </div>
         </>
     );

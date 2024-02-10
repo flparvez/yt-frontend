@@ -8,7 +8,7 @@ import { HiOutlineDotsVertical } from "./icons";
 import { deleteTweet, editTweet } from "../store/Slices/tweetSlice";
 import Image from "next/image";
 
-function TweetList({
+function TweetsList({
     tweetId,
     avatar,
     username,
@@ -53,9 +53,9 @@ function TweetList({
         <>
             <div className="text-white w-full flex justify-start items-center sm:gap-5 gap-3 border-b border-slate-600 p-3 sm:p-5">
                 <div className="w-10">
-                    <Image
-                        src={avatar || avatar2} width={50} height={50}
-                        className="w-8 h-8 object-cover rounded-full" alt=""
+                    <Image alt="" width={50} height={50}
+                        src={avatar || avatar2}
+                        className="w-8 h-8 object-cover rounded-full"
                     />
                 </div>
                 <div className="w-full flex flex-col gap-1 relative">
@@ -157,4 +157,4 @@ function TweetList({
     );
 }
 
-export default TweetList;
+export default TweetsList;

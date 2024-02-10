@@ -1,10 +1,10 @@
 "use client"
 import React from "react";
-import { formatDuration, timeAgo } from "../helpers/timeAgo.js";
-
+import { formatDuration, timeAgo } from "../helpers/timeAgo";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-import Link from "next/link";
+
 function VideoList({
     thumbnail,
     duration,
@@ -13,14 +13,25 @@ function VideoList({
     avatar,
     channelName,
     createdAt,
+    videoId,
 }) {
+    const navigate = useRouter();
+
+    const handleAvatarClick = (e) => {
+        e.stopPropagation();
+        navigate.push(`channel/${channelName}`);
+    };
+
     return (
         <>
-            <div className="w-full sm:p-2">
+            <div
+                className="w-full sm:p-2 cursor-pointer"
+                onClick={() => navigate.push(`/watch/${videoId}`)}
+            >
                 <div className="relative sm:h-60 h-48">
-                    <Image
-                        src={thumbnail} width={50} height={50}
-                        className="object-cover w-full h-full" alt=""
+                    <Image width={50} height={50}
+                        src={thumbnail} alt=""
+                        className="object-cover w-full h-full"
                     />
                     <span className="absolute bottom-2 right-2 rounded-lg text-sm bg-black py-1 px-2">
                         {formatDuration(duration)}
@@ -28,13 +39,12 @@ function VideoList({
                 </div>
                 <div className="flex items-center py-2 px-2 gap-2">
                     {avatar && (
-                        <Link href={`/channel/${channelName}`}>
-                            <Image width={50} height={50} 
+                        <div onClick={handleAvatarClick}>
+                            <Image width={50} height={50} alt=""
                                 src={avatar}
-                                className="w-10 h-10 rounded-full object-cover"
-                                alt=""
+                                className="w-10 h-10 rounded-full object-cover border border-slate-700"
                             />
-                        </Link>
+                        </div>
                     )}
                     <div>
                         <h2 className="font-medium">{title}</h2>

@@ -1,9 +1,8 @@
 "use client"
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserTweets } from "../../store/Slices/tweetSlice.js";
-import TweetList from "../../components/TweetList.js";
-import { TweetAndComment } from "../../components/index.js";
+import { getUserTweets } from "../../store/Slices/tweetSlice";
+import { TweetAndComment, TweetsList } from "../../components/index";
 
 function ChannelTweets() {
     const dispatch = useDispatch();
@@ -19,9 +18,9 @@ function ChannelTweets() {
         <>
             {authId === userId && <TweetAndComment tweet={true}/>}
             {tweets?.map((tweet) => (
-                <TweetList
+                <TweetsList
                     key={tweet?._id}
-                    avatar={tweet?.ownerDetails?.avatar.url}
+                    avatar={tweet?.ownerDetails?.avatar}
                     content={tweet?.content}
                     createdAt={tweet?.createdAt}
                     likesCount={tweet?.likesCount}

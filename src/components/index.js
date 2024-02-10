@@ -21,6 +21,8 @@ import EditVideo from "./EditVideo"
 import HeaderSection from './dashboard/HeaderSection'
 import StatsSection from './dashboard/StatsSection'
 import VideoTable from './dashboard/VideoTable'
+import TweetsList from './TweetList'
+import EditAvatar from './EditAvatar'
 
 export {
    VideoList,
@@ -44,7 +46,8 @@ export {
    HeaderSection,
    StatsSection,
 VideoTable,
-
+TweetsList,
+EditAvatar,
 
 
 };

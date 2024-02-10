@@ -1,19 +1,24 @@
 "use client"
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 
 function Avatar({ src, channelName }) {
+    const navigate = useRouter();
+
+    const handleAvatarClick = (e) => {
+        e.stopPropagation()
+        navigate.push(`/channel/${channelName}`);
+    };
     return (
         <>
-            <Link href={`/channel/${channelName}`}>
-                <Image
-                    src={src}
-                    alt="avatar" height={50} width={50}
-                    className="w-8 h-8 rounded-full object-cover"
-                />
-            </Link>
+            <Image width={50} height={50}
+                src={src}
+                alt="avatar"
+                className="w-8 h-8 rounded-full object-cover"
+                onClick={handleAvatarClick}
+            />
         </>
     );
 }
