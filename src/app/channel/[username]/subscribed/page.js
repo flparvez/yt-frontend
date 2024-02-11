@@ -1,8 +1,8 @@
 "use client"
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserChannelSubscribers } from "../../store/Slices/subscriptionSlice";
-import { Avatar } from "../../components/index";
+import { getUserChannelSubscribers } from "../../../../store/Slices/subscriptionSlice";
+import { Avatar } from "../../../../components/index";
 import Link from "next/link";
 
 

@@ -5,7 +5,7 @@ import LoginSkeleton from "../../../skeleton/LoginSkeleton.js"
 import { useForm } from "react-hook-form";
 
 import { getCurrentUser, userLogin } from "../../../store/Slices/authSlice.js";
-
+import {Input} from '../../../components/index.js'
 import { useDispatch, useSelector } from "react-redux";
 // import LoginSkeleton from "../skeleton/loginSkeleton.jsx";
 import Link from "next/link";
@@ -51,7 +51,7 @@ function Login() {
                         onSubmit={handleSubmit(submit)}
                         className="space-y-5 p-2"
                     >
-                        <input  className="mt-1 text-black block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        <Input  className="mt-1 text-black block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                        
                             label="Username / email : "
                             type="text"
@@ -65,7 +65,7 @@ function Login() {
                                 {errors.username.message}
                             </span>
                         )}
-                        <input  
+                        <Input  
                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring text-black focus:ring-indigo-200 focus:ring-opacity-50"
 
                             label="Password: "

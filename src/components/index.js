@@ -23,6 +23,9 @@ import StatsSection from './dashboard/StatsSection'
 import VideoTable from './dashboard/VideoTable'
 import TweetsList from './TweetList'
 import EditAvatar from './EditAvatar'
+import Input from "./Input"
+import Search from "./Search"
+import Logo from "./Logo"
 
 export {
    VideoList,
@@ -48,6 +51,8 @@ export {
 VideoTable,
 TweetsList,
 EditAvatar,
-
+Input,
+Search,
+Logo,
 
 };

@@ -24,6 +24,8 @@ function AdminDashboard() {
     const deleting = useSelector((state) => state.video.loading);
 
     const dispatch = useDispatch();
+console.log(videos)
+
     const [videoDetails, setVideoDetails] = useState(null);
     const [popUp, setPopUp] = useState({
         uploadVideo: false,

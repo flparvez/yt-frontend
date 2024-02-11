@@ -4,7 +4,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 import { getCurrentUser, createAccount } from "../../../store/Slices/authSlice.js";
-
+import {Input} from '../../../components/index.js'
 import { useDispatch } from "react-redux";
 import Link from "next/link";
 import { useRouter } from "next/navigation.js";
@@ -35,7 +35,7 @@ function SignUp() {
                         onSubmit={handleSubmit(submit)}
                         className="space-y-5 p-2"
                     >
-                        <input className="mt-1 block w-full text-black rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        <Input className="mt-1 block w-full text-black rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                             label="Username: "
                             type="text"
                             placeholder="Username"
@@ -48,7 +48,7 @@ function SignUp() {
                                 {errors.username.message}
                             </span>
                         )}
-                        <input className="mt-1 block w-full text-black rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        <Input className="mt-1 block w-full text-black rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                             label="Email: "
                             type="email"
                             placeholder="Email"
@@ -61,7 +61,7 @@ function SignUp() {
                                 {errors.email.message}
                             </span>
                         )}
-                        <input className="mt-1 text-black block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        <Input className="mt-1 text-black block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                             label="Fullname: "
                             type="text"
                             placeholder="Fullname"
@@ -74,7 +74,7 @@ function SignUp() {
                                 {errors.fullname.message}
                             </span>
                         )}
-                        <input className="mt-1 text-black block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        <Input className="mt-1 text-black block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                             label="Password: "
                             type="password"
                             placeholder="Password"
@@ -85,7 +85,7 @@ function SignUp() {
                         {errors.password && (
                             <span>{errors.password.message}</span>
                         )}
-                        <input className="mt-1 text-black block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        <Input className="mt-1 text-black block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                             label="Profile Picture: "
                             type="file"
                             placeholder=""

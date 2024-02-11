@@ -1,7 +1,6 @@
 "use client"
-
 import React, { useState } from "react";
-
+import { Search,  Logo } from "../components/index";
 
 import {
     IoCloseCircleOutline,
@@ -11,17 +10,17 @@ import {
     HiOutlineVideoCamera,
     MdOutlineContactSupport,
     SlMenu,
-} from "./icons.js";
+} from "./icons";
 import { useSelector } from "react-redux";
+import Image from "next/image";
+import Link from "next/link";
 
-import Link from "next/link.js";
-import Image from "next/image.js";
 
 function Navbar() {
     const [toggleMenu, setToggleMenu] = useState(false);
     const authStatus = useSelector((state) => state.auth.status);
     const username = useSelector((state) => state.auth?.userData?.username);
-    const profileImg = useSelector((state) => state.auth.userData?.avatar.url);
+    const profileImg = useSelector((state) => state.auth.userData?.avatar);
 
     const sidePanelItems = [
         {
@@ -50,12 +49,12 @@ function Navbar() {
         <>
             <nav className="w-full bg-[#0E0F0F] flex justify-between items-center p-4 sm:gap-5 gap-2 border-b-2 border-gray-500 sticky top-0 z-50">
                 <div className="flex items-center justify-center gap-2 cursor-pointer">
-                   <Link href="/">Logo</Link> 
+                    <Logo />
                 </div>
 
                 {/* search for large screens */}
                 <div className="w-full sm:w-1/3 hidden sm:block">
-                    <search/>
+                    <Search />
                 </div>
 
                 {/* search for small screens */}
@@ -69,22 +68,20 @@ function Navbar() {
                 {/* login and signup butons for larger screens */}
                 {authStatus ? (
                     <div className="rounded-full sm:block hidden">
-                      <Link href="/channel">
-                        <Image
+                        <Image width={50} height={50}
                             src={profileImg}
                             alt="profileImg"
                             className="rounded-full w-10 h-10 object-cover"
-                        /></Link>
-
+                        />
                     </div>
                 ) : (
                     <div className="space-x-2 sm:block hidden">
-                        <Link href="/auth/login">
+                        <Link href={"/auth/login"}>
                             <button className="bg-[#222222] border hover:bg-black border-slate-500 sm:px-4 sm:py-2 p-2">
                                 Login
                             </button>
                         </Link>
-                        <Link href="/auth/signup">
+                        <Link href={"/auth/signup"}>
                             <button className="font-semibold border hover:bg-[#222222] border-slate-500 sm:px-4 sm:py-2 ">
                                 Sign up
                             </button>
@@ -107,7 +104,7 @@ function Navbar() {
                     <div className="fixed right-0 top-0 text-white flex flex-col border-l h-screen w-[70%] bg-[#0F0F0F] sm:hidden rounded-lg outline-none">
                         <div className="w-full border-b h-20 flex items-center mb-2 justify-between px-3">
                             <div className="flex items-center gap-2">
-                                <h2>Logo</h2>
+                                <Logo />
                             </div>
                             <IoCloseCircleOutline
                                 size={35}
@@ -122,7 +119,7 @@ function Navbar() {
                                         href={item.url}
                                         key={item.title}
                                         onClick={() => setToggleMenu(prev => !prev)}
-                                        className={({isActive}) => isActive ? "bg-purple-500": ""}
+                                        className={({ isActive }) => isActive ? "bg-purple-500" : ""}
                                     >
                                         <div className="flex items-center border border-slate-500 gap-5 px-3 py-1 hover:bg-purple-500">
                                             <div>{item.icon}</div>
@@ -134,15 +131,14 @@ function Navbar() {
                                 ))}
                             </div>
 
-
                             {!authStatus && (
                                 <div className="flex flex-col space-y-5 mb-3">
-                                    <Link href="/login">
+                                    <Link href={"/auth/login"}>
                                         <button className="w-full bg-[#222222] border hover:bg-white hover:text-black border-slate-500 py-1 px-3">
                                             Login
                                         </button>
                                     </Link>
-                                    <Link href="/auth/signup">
+                                    <Link href={"/auth/signup"}>
                                         <button className=" w-full font-semibold border border-slate-500 hover:bg-white hover:text-black py-1 px-3">
                                             Sign up
                                         </button>

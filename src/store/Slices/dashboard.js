@@ -9,6 +9,8 @@ const initialState = {
     channelVideos: []
 };
 
+
+
 export const getChannelStats = createAsyncThunk(
     "getChannelStats",
     async () => {
@@ -22,6 +24,23 @@ export const getChannelStats = createAsyncThunk(
     }
 );
 
+// export const getChannelVideos = createAsyncThunk(
+//     "getChannelVideos",
+//     async () => {
+//         try {
+//             const response = await axiosInstance.get('/dashboard/stats');
+//             return response.data.data;
+//         } catch (error) {
+//             toast.error(error?.response?.data?.error);
+//             throw error;
+//         }
+//     }
+// );
+
+
+
+
+
 export const getChannelVideos = createAsyncThunk(
     "getChannelVideos",
     async () => {
@@ -34,6 +53,8 @@ export const getChannelVideos = createAsyncThunk(
         }
     }
 );
+
+
 
 const dashboardSlice = createSlice({
     name: "dashboard",
@@ -52,7 +73,7 @@ const dashboardSlice = createSlice({
         });
         builder.addCase(getChannelVideos.fulfilled, (state, action) => {
             state.loading = false;
-            state.channelStats = action.payload;
+            state.channelVideos = action.payload;
         });
         
     },

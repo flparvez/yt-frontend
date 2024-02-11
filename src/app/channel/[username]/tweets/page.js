@@ -1,8 +1,8 @@
 "use client"
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserTweets } from "../../store/Slices/tweetSlice";
-import { TweetAndComment, TweetsList } from "../../components/index";
+import { getUserTweets } from "../../../../store/Slices/tweetSlice";
+import { TweetAndComment, TweetsList } from "../../../../components/index";
 
 function ChannelTweets() {
     const dispatch = useDispatch();

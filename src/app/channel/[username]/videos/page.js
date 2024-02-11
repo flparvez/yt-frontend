@@ -1,8 +1,8 @@
 "use client"
 import React, { useEffect } from "react";
-import { NoVideosFound, VideoList } from "../../components/index.js";
+import { NoVideosFound, VideoList } from "../../../../components/index.js";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllVideos } from "../../store/Slices/videoSlice.js";
+import { getAllVideos } from "../../../../store/Slices/videoSlice.js";
 import Link from "next/link.js";
 
 
