@@ -5,7 +5,7 @@ import LoginSkeleton from "../../../skeleton/LoginSkeleton.js"
 import { useForm } from "react-hook-form";
 
 import { getCurrentUser, userLogin } from "../../../store/Slices/authSlice.js";
-import {Input} from '../../../components/index.js'
+import {Input, Logo} from '../../../components/index.js'
 import { useDispatch, useSelector } from "react-redux";
 // import LoginSkeleton from "../skeleton/loginSkeleton.jsx";
 import Link from "next/link";
@@ -44,7 +44,7 @@ function Login() {
             <div className="w-full h-screen text-white p-3 flex justify-center items-start">
                 <div className="flex max-w-5xl flex-col space-y-5 justify-center items-center border border-slate-600 p-3 mt-20">
                     <div className="flex items-center gap-2 mt-5">
-                        <h2>Logo</h2>
+                       <Logo />
                     </div>
 
                     <form

@@ -10,6 +10,9 @@ function History() {
     const videos = useSelector((state) => state.user?.history);
     const dispatch = useDispatch();
     window.scrollTo(0, 0);
+
+    window.localStorage.foo = "bar";
+    
     useEffect(() => {
         dispatch(getWatchHistory());
     }, [dispatch]);

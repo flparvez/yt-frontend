@@ -4,7 +4,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 import { getCurrentUser, createAccount } from "../../../store/Slices/authSlice.js";
-import {Input} from '../../../components/index.js'
+import {Input, Logo} from '../../../components/index.js'
 import { useDispatch } from "react-redux";
 import Link from "next/link";
 import { useRouter } from "next/navigation.js";
@@ -29,7 +29,7 @@ function SignUp() {
             <div className="w-full h-screen text-white  p-3 flex justify-center items-start sm:mt-8">
                 <div className="flex max-w-5xl flex-col space-y-5 justify-center items-center border border-slate-600 p-3">
                     <div className="flex items-center gap-2 mt-5">
-                        <h2>Logo</h2>
+                        <Logo />
                     </div>
                     <form
                         onSubmit={handleSubmit(submit)}
