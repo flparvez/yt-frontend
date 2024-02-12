@@ -17,9 +17,9 @@ function MySubscriptions() {
             dispatch(getSubscribedChannels(subscriberId));
         }
     }, [dispatch, subscriberId,subscriptions]);
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
 
-    window.localStorage.foo = "bar";
+   
     
     return (
         <>

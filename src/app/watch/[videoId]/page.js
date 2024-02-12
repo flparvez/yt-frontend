@@ -21,8 +21,8 @@ function VideoDetail({params}) {
         }
     }, [dispatch, videoId]);
 
-    window.scrollTo(0, 0);
-    window.localStorage.foo = "bar";
+    // window.scrollTo(0, 0);
+   
     return (
         <>
             <div className="">

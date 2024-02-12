@@ -14,10 +14,9 @@ function Channel({params}) {
         dispatch(userChannelProfile(username));
     }, [dispatch, username]);
 
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
 
- window.localStorage.foo = "bar";
- 
+
     return (
         <>
             {channel && (

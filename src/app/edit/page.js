@@ -7,8 +7,8 @@ import { useSelector } from "react-redux";
 function EditChannel() {
     const channel = useSelector((state) => state.auth?.userData);
     const loading = useSelector((state) => state.auth?.loading);
-    window.scrollTo(0, 0);
-    window.localStorage.foo = "bar";
+    // window.scrollTo(0, 0);
+    
     return (
         <>
             {loading && (
