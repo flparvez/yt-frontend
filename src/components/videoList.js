@@ -1,9 +1,9 @@
 "use client"
 import React from "react";
 import { formatDuration, timeAgo } from "../helpers/timeAgo";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
 
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 function VideoList({
     thumbnail,
@@ -19,7 +19,7 @@ function VideoList({
 
     const handleAvatarClick = (e) => {
         e.stopPropagation();
-        navigate.push(`channel/${channelName}`);
+        navigate.push(`/channel/${channelName}`);
     };
 
     return (
@@ -29,10 +29,10 @@ function VideoList({
                 onClick={() => navigate.push(`/watch/${videoId}`)}
             >
                 <div className="relative sm:h-60 h-48">
-                    <Image width={50} height={50}
-                        src={thumbnail} alt=""
-                        className="object-cover w-full h-full"
-                    />
+                     <Image width={50} height={50} alt=""
+                                src={thumbnail}
+                                className="object-cover w-full h-full"
+                            />
                     <span className="absolute bottom-2 right-2 rounded-lg text-sm bg-black py-1 px-2">
                         {formatDuration(duration)}
                     </span>

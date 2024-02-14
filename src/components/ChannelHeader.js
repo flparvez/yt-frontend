@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import {  EditAvatar } from "../components/index";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleSubscription } from "../store/Slices/subscriptionSlice";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -39,8 +40,6 @@ function ChannelHeader({
         }
     };
 
-    // useEffect(())
-
     return (
         <>
             <div className="w-full text-white">
@@ -48,8 +47,8 @@ function ChannelHeader({
                 <section className="w-full">
                     {coverImage ? (
                         <div className="relative">
-                            <Image width={50} height={50} alt=""
-                                src={coverImage}
+                           <Image width={50} height={50} alt=""
+                                src={avatar}
                                 className="sm:h-40 h-28 w-full object-cover"
                             />
                             {edit && (
@@ -66,7 +65,7 @@ function ChannelHeader({
                 <section className=" w-full sm:px-5 p-2 flex sm:flex-row flex-col items-start sm:gap-4">
                     <div className=" h-12">
                         <div className="relative sm:w-32 w-28 sm:h-32 h-28">
-                            <Image width={50} height={50} alt=""
+                           <Image width={50} height={50} alt=""
                                 src={avatar}
                                 className="rounded-full sm:w-32 w-28 sm:h-32 h-28 object-cover absolute sm:bottom-10 bottom-20 outline-none"
                             />
@@ -89,8 +88,8 @@ function ChannelHeader({
                                         `${localSubscribersCount} Subscribers`}
                                 </p>
                                 <p className="text-xs text-slate-400">
-                                    {subscribedCount && `${subscribedCount}`}{" "}
-                                    Subscribed
+                                    {subscribedCount && `${subscribedCount}`}
+                                    {" Subscribed"}
                                 </p>
                             </div>
                         </div>
