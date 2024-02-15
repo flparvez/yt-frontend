@@ -1,11 +1,10 @@
-// import type { Metadata } from "next";
 "use client"
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Provider } from "react-redux";
 import { store } from "../store/store";
 import Navbar from '../components/Navbar.js'
-import { Sidebar } from "@/components";
+import { Sidebar } from "@/components/index";
 const inter = Inter({ subsets: ["latin"] });
 
 // export const metadata: Metadata = {
