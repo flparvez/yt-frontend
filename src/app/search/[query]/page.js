@@ -2,7 +2,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { NoVideosFound, VideoList } from "../../../components/index";
-import HomeSkeleton from "../skeleton/HomeSkeleton";
+import HomeSkeleton from "../../../skeleton/HomeSkelton";
 
 function SearchVideos() {
     const loading = useSelector((state) => state.video?.loading);
