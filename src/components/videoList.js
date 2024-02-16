@@ -46,7 +46,7 @@ function VideoList({
                             />
                         </div>
                     )}
-                    <div>
+                    <div className="dark:text-white text-black">
                         <h2 className="font-medium">{title}</h2>
                         <div className="text-xs space-x-1 text-slate-400">
                             <span>{views} Views</span> .

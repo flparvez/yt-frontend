@@ -4,7 +4,7 @@ import React from "react";
 
 function HeaderSection({ username, setPopUp }) {
     return (
-        <section className="flex flex-col sm:flex-row justify-between sm:items-center gap-2">
+        <section className="flex text-black dark:text-white flex-col sm:flex-row justify-between sm:items-center gap-2">
             <div>
                 <h1 className="sm:text-2xl text-xl font-bold">
                     Welcome Back, {username}{" "}

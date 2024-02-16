@@ -53,7 +53,7 @@ console.log(videos)
 
     return (
         <>
-            <div className="container">
+            <div className="container text-black dark:text-white">
                 <div className=" w-full relative h-screen text-white space-y-5 z-10">
                     {/* uploadVideoPopup */}
                     {popUp.uploadVideo && (

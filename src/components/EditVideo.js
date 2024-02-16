@@ -54,7 +54,7 @@ function EditVideo({ videoId, title, description, setEditVideoPopup }) {
 
     return (
         <>
-            <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-70 z-50">
+            <div className="fixed text-black dark:text-white top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-70 z-50">
                 <form
                     onSubmit={handleSubmit(updateVideo)}
                     className=" bg-black space-y-2 border outline-none p-2"

@@ -10,7 +10,7 @@ import {
 function StatsSection({ dashboard }) {
     return (
         <>
-            <section className="grid sm:grid-cols-4 grid-cols-2 justify-evenly items-center gap-2">
+            <section className="grid text-black dark:text-white sm:grid-cols-4 grid-cols-2 justify-evenly items-center gap-2">
                 <div className="border border-slate-500 sm:p-3 p-2">
                     <MdOutlineSlowMotionVideo
                         className="text-purple-500 mb-2"

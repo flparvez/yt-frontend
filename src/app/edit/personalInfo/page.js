@@ -32,7 +32,7 @@ function EditPersonalInfo() {
 
     return (
         <>
-            <div className="w-full text-white flex justify-center items-center mt-5">
+            <div className="w-full text-black dark:text-white flex justify-center items-center mt-5">
                 <div className="bg-transparent p-5 border rounded shadow-lg w-full max-w-md">
                     <h2 className="text-lg font-bold mb-4">
                         Personal Information

@@ -19,7 +19,7 @@ function ChannelVideos() {
 
     return (
         <>
-            <div className="grid lg:grid-cols-3 sm:grid-cols-2 text-white">
+            <div className="grid text-black dark:text-white lg:grid-cols-3 sm:grid-cols-2 ">
                 {videos?.map((video) => (
                     <VideoList
                         key={video._id}

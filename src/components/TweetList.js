@@ -51,7 +51,7 @@ function TweetsList({
 
     return (
         <>
-            <div className="text-white w-full flex justify-start items-center sm:gap-5 gap-3 border-b border-slate-600 p-3 sm:p-5">
+            <div className="w-full dark:text-white text-black flex justify-start items-center sm:gap-5 gap-3 border-b border-slate-600 p-3 sm:p-5">
                 <div className="w-10">
                     <Image alt="" width={50} height={50}
                         src={avatar || avatar2}

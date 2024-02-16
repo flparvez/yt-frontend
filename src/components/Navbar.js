@@ -77,12 +77,12 @@ function Navbar() {
                 ) : (
                     <div className="space-x-2 sm:block hidden">
                         <Link href={"/auth/login"}>
-                            <button className="bg-[#222222] border hover:bg-black border-slate-500 sm:px-4 sm:py-2 p-2">
+                            <button className="bg-[#222222] border text-white hover:bg-black border-slate-500 sm:px-4 sm:py-2 p-2">
                                 Login
                             </button>
                         </Link>
                         <Link href={"/auth/signup"}>
-                            <button className="font-semibold border hover:bg-[#222222] border-slate-500 sm:px-4 sm:py-2 ">
+                            <button className="font-semibold border text-white hover:bg-[#222222] border-slate-500 sm:px-4 sm:py-2 ">
                                 Sign up
                             </button>
                         </Link>

@@ -16,7 +16,7 @@ function Edit({ initialContent, onCancel, onSave }) {
                 autoFocus
                 onChange={(e) => setEditedContent(e.target.value)}
             />
-            <div className="space-x-4 mt-3 w-3/4 inline-flex justify-end items-center">
+            <div className="space-x-4 text-black dark:text-white mt-3 w-3/4 inline-flex justify-end items-center">
                 <span
                     className="bg-[#222222] py-1 px-3 font-normal rounded-lg hover:bg-black cursor-pointer"
                     onClick={onCancel}
