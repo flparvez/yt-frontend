@@ -1,16 +1,14 @@
 "use client"
 import React from "react";
-import LoginSkeleton from "../../../skeleton/LoginSkeleton.js"
-
+import { Logo, Input } from "../../../components/index";
 import { useForm } from "react-hook-form";
 
-import { getCurrentUser, userLogin } from "../../../store/Slices/authSlice.js";
-import {Input, Logo} from '../../../components/index.js'
-import { useDispatch, useSelector } from "react-redux";
-// import LoginSkeleton from "../skeleton/loginSkeleton.jsx";
-import Link from "next/link";
-import { useRouter } from "next/navigation.js";
+import { getCurrentUser, userLogin } from "../../../store/Slices/authSlice";
 
+import { useDispatch, useSelector } from "react-redux";
+import LoginSkeleton from "../../../skeleton/LoginSkeleton";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 function Login() {
     const {
@@ -20,7 +18,7 @@ function Login() {
     } = useForm();
     const navigate = useRouter();
     const dispatch = useDispatch();
-    const loading = useSelector(state => state.auth?.loading);
+    const loading = useSelector((state) => state.auth?.loading);
 
     const submit = async (data) => {
         const isEmail = data.username.includes("@");
@@ -28,10 +26,7 @@ function Login() {
             ? { email: data.username, password: data.password }
             : data;
 
-            
-
         const response = await dispatch(userLogin(loginData));
-        console.log(response)
         const user = await dispatch(getCurrentUser());
         if (user && response?.payload) {
             navigate.push("/");
@@ -39,43 +34,40 @@ function Login() {
     };
 
     if (loading) {
-        return <LoginSkeleton />
+        return <LoginSkeleton />;
     }
 
     return (
         <>
-            <div className="w-full h-screen text-black dark:text-white p-3 flex justify-center items-start">
+            <div className="w-full h-screen text-white p-3 flex justify-center items-start">
                 <div className="flex max-w-5xl flex-col space-y-5 justify-center items-center border border-slate-600 p-3 mt-20">
                     <div className="flex items-center gap-2 mt-5">
-                       <Logo />
+                        <Logo />
                     </div>
 
                     <form
                         onSubmit={handleSubmit(submit)}
                         className="space-y-5 p-2"
                     >
-                        <Input  className="mt-1 text-black block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                       
+                        <Input
                             label="Username / email : "
                             type="text"
                             placeholder="example@gmail.com"
                             {...register("username", {
-                                required: true,
+                                required: "username is required",
                             })}
                         />
                         {errors.username && (
-                            <span className="text-white">
+                            <span className="text-red-500">
                                 {errors.username.message}
                             </span>
                         )}
-                        <Input  
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring text-black focus:ring-indigo-200 focus:ring-opacity-50"
-
+                        <Input
                             label="Password: "
                             type="password"
                             placeholder="1kd074fjw0"
                             {...register("password", {
-                                required: true,
+                                required: "password is required",
                             })}
                         />
                         {errors.password && (
@@ -93,7 +85,7 @@ function Login() {
                         <p className="text-center text-sm">
                             Don&apos;t have an account?{" "}
                             <Link
-                                href={"/auth/signup"}
+                                href={"/signup"}
                                 className="text-purple-600 cursor-pointer hover:opacity-70"
                             >
                                 SignUp
